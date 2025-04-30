@@ -17,7 +17,7 @@
           "environment": [],
           "externalConsole": false,
           "MIMode": "gdb"
-      }
+      },
       {
             // launch position_transform
             "name": "Debug Object Position Calibration",
