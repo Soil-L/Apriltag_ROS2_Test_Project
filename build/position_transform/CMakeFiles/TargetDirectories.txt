@@ -1,0 +1,10 @@
+/home/soil/LZR/AprilTag/build/position_transform/CMakeFiles/uninstall.dir
+/home/soil/LZR/AprilTag/build/position_transform/CMakeFiles/position_transform_uninstall.dir
+/home/soil/LZR/AprilTag/build/position_transform/CMakeFiles/position_transform.dir
+/home/soil/LZR/AprilTag/build/position_transform/CMakeFiles/test.dir
+/home/soil/LZR/AprilTag/build/position_transform/CMakeFiles/edit_cache.dir
+/home/soil/LZR/AprilTag/build/position_transform/CMakeFiles/rebuild_cache.dir
+/home/soil/LZR/AprilTag/build/position_transform/CMakeFiles/list_install_components.dir
+/home/soil/LZR/AprilTag/build/position_transform/CMakeFiles/install.dir
+/home/soil/LZR/AprilTag/build/position_transform/CMakeFiles/install/local.dir
+/home/soil/LZR/AprilTag/build/position_transform/CMakeFiles/install/strip.dir

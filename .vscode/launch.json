@@ -1,0 +1,34 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+      {
+          "name": "Debug AprilTag Detector",
+          "type": "cppdbg",
+          "request": "launch",
+          "program": "${workspaceFolder}/install/apriltag_ros/lib/apriltag_ros/tag_detector",
+          "args": [
+              "--ros-args",
+              "-r", "/image:=/camera/color/image_raw",
+              "-r", "/image_info:=/camera/color/camera_info",
+              "--params-file", "${workspaceFolder}/src/apriltag_ros/apriltag_ros/cfg/tags_36h11_filter.yaml"
+          ],
+          "preLaunchTask": "colcon build (Debug)",           
+          "cwd": "${workspaceFolder}",
+          "environment": [],
+          "externalConsole": false,
+          "MIMode": "gdb"
+      }
+      {
+            // launch position_transform
+            "name": "Debug Object Position Calibration",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/install/position_transform/lib/position_transform/position_transform",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+      }
+  ]
+}

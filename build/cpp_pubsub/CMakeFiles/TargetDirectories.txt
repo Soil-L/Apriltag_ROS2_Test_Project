@@ -1,0 +1,11 @@
+/home/soil/LZR/AprilTag/build/cpp_pubsub/CMakeFiles/uninstall.dir
+/home/soil/LZR/AprilTag/build/cpp_pubsub/CMakeFiles/cpp_pubsub_uninstall.dir
+/home/soil/LZR/AprilTag/build/cpp_pubsub/CMakeFiles/talker.dir
+/home/soil/LZR/AprilTag/build/cpp_pubsub/CMakeFiles/listener.dir
+/home/soil/LZR/AprilTag/build/cpp_pubsub/CMakeFiles/test.dir
+/home/soil/LZR/AprilTag/build/cpp_pubsub/CMakeFiles/edit_cache.dir
+/home/soil/LZR/AprilTag/build/cpp_pubsub/CMakeFiles/rebuild_cache.dir
+/home/soil/LZR/AprilTag/build/cpp_pubsub/CMakeFiles/list_install_components.dir
+/home/soil/LZR/AprilTag/build/cpp_pubsub/CMakeFiles/install.dir
+/home/soil/LZR/AprilTag/build/cpp_pubsub/CMakeFiles/install/local.dir
+/home/soil/LZR/AprilTag/build/cpp_pubsub/CMakeFiles/install/strip.dir
