@@ -22,33 +22,41 @@ private:
     void calculatePosition()
     {
         try {
-            // 获取从world到camera_color_optical_frame的变换
+            // 获取从 world 到 camera_color_optical_frame 的变换
             auto world_to_camera = tf_buffer_.lookupTransform(
                 "world", "camera_color_optical_frame",
                 tf2::TimePointZero);
             
-            // 获取从camera_color_optical_frame到object的变换
+            // 获取从 camera_color_optical_frame 到 object 的变换
             auto camera_to_object = tf_buffer_.lookupTransform(
                 "camera_color_optical_frame", "object",
                 tf2::TimePointZero);
             
-            // 将消息转换为tf2::Transform
+            // 将消息转换为 tf2::Transform
             tf2::Transform tf_world_to_camera, tf_camera_to_object;
             tf2::fromMsg(world_to_camera.transform, tf_world_to_camera);
             tf2::fromMsg(camera_to_object.transform, tf_camera_to_object);
             
-            // 计算组合变换
+            // 计算 world → object 的变换
             tf2::Transform tf_world_to_object = tf_world_to_camera * tf_camera_to_object;
             
-            // 提取位置和旋转
-            auto position = tf_world_to_object.getOrigin();
-            auto rotation = tf_world_to_object.getRotation();
+            // 计算 object → world 的变换（即 world → object 的逆矩阵）
+            tf2::Transform tf_object_to_world = tf_world_to_object.inverse();
             
-            RCLCPP_INFO(this->get_logger(), "Object in world frame:");
-            RCLCPP_INFO(this->get_logger(), "  Position: [%.3f, %.3f, %.3f]",
-                       position.x(), position.y(), position.z());
-            RCLCPP_INFO(this->get_logger(), "  Orientation: [%.3f, %.3f, %.3f, %.3f]",
-                       rotation.x(), rotation.y(), rotation.z(), rotation.w());
+            // 提取变换矩阵（4×4 齐次矩阵）
+            tf2::Matrix3x3 rotation = tf_object_to_world.getBasis();
+            tf2::Vector3 translation = tf_object_to_world.getOrigin();
+            
+            // 打印变换矩阵（可以用于后续计算）
+            RCLCPP_INFO(this->get_logger(), "Object → World Transform Matrix:");
+            RCLCPP_INFO(this->get_logger(), "  [%.3f, %.3f, %.3f, %.3f]",
+                       rotation[0][0], rotation[0][1], rotation[0][2], translation.x());
+            RCLCPP_INFO(this->get_logger(), "  [%.3f, %.3f, %.3f, %.3f]",
+                       rotation[1][0], rotation[1][1], rotation[1][2], translation.y());
+            RCLCPP_INFO(this->get_logger(), "  [%.3f, %.3f, %.3f, %.3f]",
+                       rotation[2][0], rotation[2][1], rotation[2][2], translation.z());
+            RCLCPP_INFO(this->get_logger(), "  [%.3f, %.3f, %.3f, %.3f]",
+                       0.0, 0.0, 0.0, 1.0);
             
         } catch (const tf2::TransformException &ex) {
             RCLCPP_WARN(this->get_logger(), "TF error: %s", ex.what());
